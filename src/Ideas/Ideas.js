@@ -2,14 +2,23 @@ import React from 'react';
 import Card from '../Card/Card';
 import './Ideas.css';
 
-const Ideas = (props) => {
-  const { name } = props;
+const Ideas = ({ideas, deleteIdea}) => {
+
+  const ideaCards = ideas.map(idea => {
+    return (
+      <Card
+        title={idea.title}
+        description={idea.description}
+        id={idea.id}
+        key={idea.id}
+        deleteIdea={deleteIdea}
+      />
+    )
+  })
 
   return (
     <div className='ideas-container'>
-      <Card />
-      <Card />
-      <Card />
+      {ideaCards}
     </div>
   )
 }
